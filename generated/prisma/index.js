@@ -169,11 +169,12 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://RocketSeat1_owner:npg_qXhd67WQLzTn@ep-lucky-lab-a4nifkpq-pooler.us-east-1.aws.neon.tech/RocketSeat1?sslmode=require"
+        "value": null
       }
     }
   },
