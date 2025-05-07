@@ -2,6 +2,6 @@ POST http://localhost:3000/authenticate
 Content-Type: application/json; charset=utf-8
 
 {
-	"username": "daniel123123ikjio",
+	"username": "daniel123123ikjio123",
 	"password": "1234567asddadsda89"
 }
