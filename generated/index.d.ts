@@ -3342,10 +3342,10 @@ export namespace Prisma {
   export type DeliveriesGroupByOutputType = {
     id: string
     id_client: string
-    id_deliveryman: string
+    id_deliveryman: string | null
     item_name: string
     created_at: Date
-    end_at: Date
+    end_at: Date | null
     _count: DeliveriesCountAggregateOutputType | null
     _min: DeliveriesMinAggregateOutputType | null
     _max: DeliveriesMaxAggregateOutputType | null
@@ -3373,7 +3373,7 @@ export namespace Prisma {
     created_at?: boolean
     end_at?: boolean
     client?: boolean | ClientsDefaultArgs<ExtArgs>
-    deliveryman?: boolean | DeliverymanDefaultArgs<ExtArgs>
+    deliveryman?: boolean | Deliveries$deliverymanArgs<ExtArgs>
   }, ExtArgs["result"]["deliveries"]>
 
   export type DeliveriesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3384,7 +3384,7 @@ export namespace Prisma {
     created_at?: boolean
     end_at?: boolean
     client?: boolean | ClientsDefaultArgs<ExtArgs>
-    deliveryman?: boolean | DeliverymanDefaultArgs<ExtArgs>
+    deliveryman?: boolean | Deliveries$deliverymanArgs<ExtArgs>
   }, ExtArgs["result"]["deliveries"]>
 
   export type DeliveriesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3395,7 +3395,7 @@ export namespace Prisma {
     created_at?: boolean
     end_at?: boolean
     client?: boolean | ClientsDefaultArgs<ExtArgs>
-    deliveryman?: boolean | DeliverymanDefaultArgs<ExtArgs>
+    deliveryman?: boolean | Deliveries$deliverymanArgs<ExtArgs>
   }, ExtArgs["result"]["deliveries"]>
 
   export type DeliveriesSelectScalar = {
@@ -3410,30 +3410,30 @@ export namespace Prisma {
   export type DeliveriesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "id_client" | "id_deliveryman" | "item_name" | "created_at" | "end_at", ExtArgs["result"]["deliveries"]>
   export type DeliveriesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     client?: boolean | ClientsDefaultArgs<ExtArgs>
-    deliveryman?: boolean | DeliverymanDefaultArgs<ExtArgs>
+    deliveryman?: boolean | Deliveries$deliverymanArgs<ExtArgs>
   }
   export type DeliveriesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     client?: boolean | ClientsDefaultArgs<ExtArgs>
-    deliveryman?: boolean | DeliverymanDefaultArgs<ExtArgs>
+    deliveryman?: boolean | Deliveries$deliverymanArgs<ExtArgs>
   }
   export type DeliveriesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     client?: boolean | ClientsDefaultArgs<ExtArgs>
-    deliveryman?: boolean | DeliverymanDefaultArgs<ExtArgs>
+    deliveryman?: boolean | Deliveries$deliverymanArgs<ExtArgs>
   }
 
   export type $DeliveriesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Deliveries"
     objects: {
       client: Prisma.$ClientsPayload<ExtArgs>
-      deliveryman: Prisma.$DeliverymanPayload<ExtArgs>
+      deliveryman: Prisma.$DeliverymanPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       id_client: string
-      id_deliveryman: string
+      id_deliveryman: string | null
       item_name: string
       created_at: Date
-      end_at: Date
+      end_at: Date | null
     }, ExtArgs["result"]["deliveries"]>
     composites: {}
   }
@@ -3829,7 +3829,7 @@ export namespace Prisma {
   export interface Prisma__DeliveriesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     client<T extends ClientsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClientsDefaultArgs<ExtArgs>>): Prisma__ClientsClient<$Result.GetResult<Prisma.$ClientsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    deliveryman<T extends DeliverymanDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DeliverymanDefaultArgs<ExtArgs>>): Prisma__DeliverymanClient<$Result.GetResult<Prisma.$DeliverymanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    deliveryman<T extends Deliveries$deliverymanArgs<ExtArgs> = {}>(args?: Subset<T, Deliveries$deliverymanArgs<ExtArgs>>): Prisma__DeliverymanClient<$Result.GetResult<Prisma.$DeliverymanPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4261,6 +4261,25 @@ export namespace Prisma {
   }
 
   /**
+   * Deliveries.deliveryman
+   */
+  export type Deliveries$deliverymanArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Deliveryman
+     */
+    select?: DeliverymanSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Deliveryman
+     */
+    omit?: DeliverymanOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeliverymanInclude<ExtArgs> | null
+    where?: DeliverymanWhereInput
+  }
+
+  /**
    * Deliveries without action
    */
   export type DeliveriesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4337,6 +4356,14 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const NullsOrder: {
+    first: 'first',
+    last: 'last'
+  };
+
+  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -4485,21 +4512,21 @@ export namespace Prisma {
     NOT?: DeliveriesWhereInput | DeliveriesWhereInput[]
     id?: StringFilter<"Deliveries"> | string
     id_client?: StringFilter<"Deliveries"> | string
-    id_deliveryman?: StringFilter<"Deliveries"> | string
+    id_deliveryman?: StringNullableFilter<"Deliveries"> | string | null
     item_name?: StringFilter<"Deliveries"> | string
     created_at?: DateTimeFilter<"Deliveries"> | Date | string
-    end_at?: DateTimeFilter<"Deliveries"> | Date | string
+    end_at?: DateTimeNullableFilter<"Deliveries"> | Date | string | null
     client?: XOR<ClientsScalarRelationFilter, ClientsWhereInput>
-    deliveryman?: XOR<DeliverymanScalarRelationFilter, DeliverymanWhereInput>
+    deliveryman?: XOR<DeliverymanNullableScalarRelationFilter, DeliverymanWhereInput> | null
   }
 
   export type DeliveriesOrderByWithRelationInput = {
     id?: SortOrder
     id_client?: SortOrder
-    id_deliveryman?: SortOrder
+    id_deliveryman?: SortOrderInput | SortOrder
     item_name?: SortOrder
     created_at?: SortOrder
-    end_at?: SortOrder
+    end_at?: SortOrderInput | SortOrder
     client?: ClientsOrderByWithRelationInput
     deliveryman?: DeliverymanOrderByWithRelationInput
   }
@@ -4510,21 +4537,21 @@ export namespace Prisma {
     OR?: DeliveriesWhereInput[]
     NOT?: DeliveriesWhereInput | DeliveriesWhereInput[]
     id_client?: StringFilter<"Deliveries"> | string
-    id_deliveryman?: StringFilter<"Deliveries"> | string
+    id_deliveryman?: StringNullableFilter<"Deliveries"> | string | null
     item_name?: StringFilter<"Deliveries"> | string
     created_at?: DateTimeFilter<"Deliveries"> | Date | string
-    end_at?: DateTimeFilter<"Deliveries"> | Date | string
+    end_at?: DateTimeNullableFilter<"Deliveries"> | Date | string | null
     client?: XOR<ClientsScalarRelationFilter, ClientsWhereInput>
-    deliveryman?: XOR<DeliverymanScalarRelationFilter, DeliverymanWhereInput>
+    deliveryman?: XOR<DeliverymanNullableScalarRelationFilter, DeliverymanWhereInput> | null
   }, "id">
 
   export type DeliveriesOrderByWithAggregationInput = {
     id?: SortOrder
     id_client?: SortOrder
-    id_deliveryman?: SortOrder
+    id_deliveryman?: SortOrderInput | SortOrder
     item_name?: SortOrder
     created_at?: SortOrder
-    end_at?: SortOrder
+    end_at?: SortOrderInput | SortOrder
     _count?: DeliveriesCountOrderByAggregateInput
     _max?: DeliveriesMaxOrderByAggregateInput
     _min?: DeliveriesMinOrderByAggregateInput
@@ -4536,10 +4563,10 @@ export namespace Prisma {
     NOT?: DeliveriesScalarWhereWithAggregatesInput | DeliveriesScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Deliveries"> | string
     id_client?: StringWithAggregatesFilter<"Deliveries"> | string
-    id_deliveryman?: StringWithAggregatesFilter<"Deliveries"> | string
+    id_deliveryman?: StringNullableWithAggregatesFilter<"Deliveries"> | string | null
     item_name?: StringWithAggregatesFilter<"Deliveries"> | string
     created_at?: DateTimeWithAggregatesFilter<"Deliveries"> | Date | string
-    end_at?: DateTimeWithAggregatesFilter<"Deliveries"> | Date | string
+    end_at?: DateTimeNullableWithAggregatesFilter<"Deliveries"> | Date | string | null
   }
 
   export type DeliverymanCreateInput = {
@@ -4638,61 +4665,61 @@ export namespace Prisma {
     id?: string
     item_name: string
     created_at?: Date | string
-    end_at?: Date | string
+    end_at?: Date | string | null
     client: ClientsCreateNestedOneWithoutDeliveriesInput
-    deliveryman: DeliverymanCreateNestedOneWithoutDeliveriesInput
+    deliveryman?: DeliverymanCreateNestedOneWithoutDeliveriesInput
   }
 
   export type DeliveriesUncheckedCreateInput = {
     id?: string
     id_client: string
-    id_deliveryman: string
+    id_deliveryman?: string | null
     item_name: string
     created_at?: Date | string
-    end_at?: Date | string
+    end_at?: Date | string | null
   }
 
   export type DeliveriesUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     item_name?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     client?: ClientsUpdateOneRequiredWithoutDeliveriesNestedInput
-    deliveryman?: DeliverymanUpdateOneRequiredWithoutDeliveriesNestedInput
+    deliveryman?: DeliverymanUpdateOneWithoutDeliveriesNestedInput
   }
 
   export type DeliveriesUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     id_client?: StringFieldUpdateOperationsInput | string
-    id_deliveryman?: StringFieldUpdateOperationsInput | string
+    id_deliveryman?: NullableStringFieldUpdateOperationsInput | string | null
     item_name?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type DeliveriesCreateManyInput = {
     id?: string
     id_client: string
-    id_deliveryman: string
+    id_deliveryman?: string | null
     item_name: string
     created_at?: Date | string
-    end_at?: Date | string
+    end_at?: Date | string | null
   }
 
   export type DeliveriesUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     item_name?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type DeliveriesUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     id_client?: StringFieldUpdateOperationsInput | string
-    id_deliveryman?: StringFieldUpdateOperationsInput | string
+    id_deliveryman?: NullableStringFieldUpdateOperationsInput | string | null
     item_name?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -4774,6 +4801,21 @@ export namespace Prisma {
     password?: SortOrder
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -4785,14 +4827,30 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
   export type ClientsScalarRelationFilter = {
     is?: ClientsWhereInput
     isNot?: ClientsWhereInput
   }
 
-  export type DeliverymanScalarRelationFilter = {
-    is?: DeliverymanWhereInput
-    isNot?: DeliverymanWhereInput
+  export type DeliverymanNullableScalarRelationFilter = {
+    is?: DeliverymanWhereInput | null
+    isNot?: DeliverymanWhereInput | null
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type DeliveriesCountOrderByAggregateInput = {
@@ -4822,6 +4880,24 @@ export namespace Prisma {
     end_at?: SortOrder
   }
 
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -4834,6 +4910,20 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type DeliveriesCreateNestedManyWithoutDeliverymanInput = {
@@ -4940,6 +5030,10 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+  }
+
   export type ClientsUpdateOneRequiredWithoutDeliveriesNestedInput = {
     create?: XOR<ClientsCreateWithoutDeliveriesInput, ClientsUncheckedCreateWithoutDeliveriesInput>
     connectOrCreate?: ClientsCreateOrConnectWithoutDeliveriesInput
@@ -4948,12 +5042,18 @@ export namespace Prisma {
     update?: XOR<XOR<ClientsUpdateToOneWithWhereWithoutDeliveriesInput, ClientsUpdateWithoutDeliveriesInput>, ClientsUncheckedUpdateWithoutDeliveriesInput>
   }
 
-  export type DeliverymanUpdateOneRequiredWithoutDeliveriesNestedInput = {
+  export type DeliverymanUpdateOneWithoutDeliveriesNestedInput = {
     create?: XOR<DeliverymanCreateWithoutDeliveriesInput, DeliverymanUncheckedCreateWithoutDeliveriesInput>
     connectOrCreate?: DeliverymanCreateOrConnectWithoutDeliveriesInput
     upsert?: DeliverymanUpsertWithoutDeliveriesInput
+    disconnect?: DeliverymanWhereInput | boolean
+    delete?: DeliverymanWhereInput | boolean
     connect?: DeliverymanWhereUniqueInput
     update?: XOR<XOR<DeliverymanUpdateToOneWithWhereWithoutDeliveriesInput, DeliverymanUpdateWithoutDeliveriesInput>, DeliverymanUncheckedUpdateWithoutDeliveriesInput>
+  }
+
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -4998,6 +5098,20 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -5007,6 +5121,45 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -5023,11 +5176,25 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
+  }
+
   export type DeliveriesCreateWithoutDeliverymanInput = {
     id?: string
     item_name: string
     created_at?: Date | string
-    end_at?: Date | string
+    end_at?: Date | string | null
     client: ClientsCreateNestedOneWithoutDeliveriesInput
   }
 
@@ -5036,7 +5203,7 @@ export namespace Prisma {
     id_client: string
     item_name: string
     created_at?: Date | string
-    end_at?: Date | string
+    end_at?: Date | string | null
   }
 
   export type DeliveriesCreateOrConnectWithoutDeliverymanInput = {
@@ -5071,26 +5238,26 @@ export namespace Prisma {
     NOT?: DeliveriesScalarWhereInput | DeliveriesScalarWhereInput[]
     id?: StringFilter<"Deliveries"> | string
     id_client?: StringFilter<"Deliveries"> | string
-    id_deliveryman?: StringFilter<"Deliveries"> | string
+    id_deliveryman?: StringNullableFilter<"Deliveries"> | string | null
     item_name?: StringFilter<"Deliveries"> | string
     created_at?: DateTimeFilter<"Deliveries"> | Date | string
-    end_at?: DateTimeFilter<"Deliveries"> | Date | string
+    end_at?: DateTimeNullableFilter<"Deliveries"> | Date | string | null
   }
 
   export type DeliveriesCreateWithoutClientInput = {
     id?: string
     item_name: string
     created_at?: Date | string
-    end_at?: Date | string
-    deliveryman: DeliverymanCreateNestedOneWithoutDeliveriesInput
+    end_at?: Date | string | null
+    deliveryman?: DeliverymanCreateNestedOneWithoutDeliveriesInput
   }
 
   export type DeliveriesUncheckedCreateWithoutClientInput = {
     id?: string
-    id_deliveryman: string
+    id_deliveryman?: string | null
     item_name: string
     created_at?: Date | string
-    end_at?: Date | string
+    end_at?: Date | string | null
   }
 
   export type DeliveriesCreateOrConnectWithoutClientInput = {
@@ -5204,14 +5371,14 @@ export namespace Prisma {
     id_client: string
     item_name: string
     created_at?: Date | string
-    end_at?: Date | string
+    end_at?: Date | string | null
   }
 
   export type DeliveriesUpdateWithoutDeliverymanInput = {
     id?: StringFieldUpdateOperationsInput | string
     item_name?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     client?: ClientsUpdateOneRequiredWithoutDeliveriesNestedInput
   }
 
@@ -5220,7 +5387,7 @@ export namespace Prisma {
     id_client?: StringFieldUpdateOperationsInput | string
     item_name?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type DeliveriesUncheckedUpdateManyWithoutDeliverymanInput = {
@@ -5228,39 +5395,39 @@ export namespace Prisma {
     id_client?: StringFieldUpdateOperationsInput | string
     item_name?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type DeliveriesCreateManyClientInput = {
     id?: string
-    id_deliveryman: string
+    id_deliveryman?: string | null
     item_name: string
     created_at?: Date | string
-    end_at?: Date | string
+    end_at?: Date | string | null
   }
 
   export type DeliveriesUpdateWithoutClientInput = {
     id?: StringFieldUpdateOperationsInput | string
     item_name?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    deliveryman?: DeliverymanUpdateOneRequiredWithoutDeliveriesNestedInput
+    end_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    deliveryman?: DeliverymanUpdateOneWithoutDeliveriesNestedInput
   }
 
   export type DeliveriesUncheckedUpdateWithoutClientInput = {
     id?: StringFieldUpdateOperationsInput | string
-    id_deliveryman?: StringFieldUpdateOperationsInput | string
+    id_deliveryman?: NullableStringFieldUpdateOperationsInput | string | null
     item_name?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type DeliveriesUncheckedUpdateManyWithoutClientInput = {
     id?: StringFieldUpdateOperationsInput | string
-    id_deliveryman?: StringFieldUpdateOperationsInput | string
+    id_deliveryman?: NullableStringFieldUpdateOperationsInput | string | null
     item_name?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    end_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    end_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 

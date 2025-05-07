@@ -1,0 +1,9 @@
+POST http://localhost:3000/delivery
+Content-Type: application/json; charset=utf-8
+
+{
+    "item_name": "Consolo do cu largo",
+    "id_client": "2e3262cf-5bbc-444e-a61c-c349cb1e7e25"
+
+}
+
