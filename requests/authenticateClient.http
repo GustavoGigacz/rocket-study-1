@@ -1,4 +1,4 @@
-POST http://localhost:3000/authenticate
+POST http://localhost:3000/client/authenticate
 Content-Type: application/json; charset=utf-8
 
 {
