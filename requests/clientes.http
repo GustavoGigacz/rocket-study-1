@@ -2,7 +2,7 @@ POST http://localhost:3000/client
 Content-Type: application/json; charset=utf-8
 
 {
-	"username": "daniel123123ikjio123",
-	"password": "1234567asddadsda89"
+	"username": "JohnJones123123",
+	"password": "ufcplayer123123"
 }
 
