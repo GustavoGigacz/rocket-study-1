@@ -9,6 +9,7 @@ import { ensureAuthentication } from "./middlewares/ensureAthenticateClient";
 import { findAllController } from "./modules/deliveries/useCases/findAllAvailable/findAllWithoutController";
 import { ensureAuthenticationDeliveryman } from "./middlewares/ensureAuthenticateDelivery";
 import { UpdateDeliverymanController } from "./modules/deliveries/useCases/updateDeliveryman/useCases/updateDeliverymanController";
+import { FindAllDeliveriesController } from "./modules/clients/useCases/deliveries/FindAllDeliveriesController";
 
 const routes = express.Router();
 
@@ -19,6 +20,7 @@ const authenticateDeliverymanController = new AuthenticateDeliverymanController(
 const deliveryController = new CreateDeliveryController();
 const findAllUseCase = new findAllController()
 const updateDeliverymanUseCase = new UpdateDeliverymanController();
+const findAllDeliveriesClient = new FindAllDeliveriesController()
 
 
 
@@ -33,5 +35,7 @@ routes.post("/delivery", asyncHandler(ensureAuthentication), deliveryController.
 routes.get("/delivery/available", asyncHandler(ensureAuthenticationDeliveryman), asyncHandler(findAllUseCase.handle))
 
 routes.put("/delivery/updateDeliveryman/:id", asyncHandler(ensureAuthenticationDeliveryman), asyncHandler(updateDeliverymanUseCase.handle))
+
+routes.get("/client/deliveries", asyncHandler(findAllDeliveriesClient.handle))
 
 export { routes }

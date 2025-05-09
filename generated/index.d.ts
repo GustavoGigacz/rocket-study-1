@@ -1051,11 +1051,11 @@ export namespace Prisma {
    */
 
   export type DeliverymanCountOutputType = {
-    Deliveries: number
+    deliveries: number
   }
 
   export type DeliverymanCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Deliveries?: boolean | DeliverymanCountOutputTypeCountDeliveriesArgs
+    deliveries?: boolean | DeliverymanCountOutputTypeCountDeliveriesArgs
   }
 
   // Custom InputTypes
@@ -1082,11 +1082,11 @@ export namespace Prisma {
    */
 
   export type ClientsCountOutputType = {
-    Deliveries: number
+    deliveries: number
   }
 
   export type ClientsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Deliveries?: boolean | ClientsCountOutputTypeCountDeliveriesArgs
+    deliveries?: boolean | ClientsCountOutputTypeCountDeliveriesArgs
   }
 
   // Custom InputTypes
@@ -1260,7 +1260,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     password?: boolean
-    Deliveries?: boolean | Deliveryman$DeliveriesArgs<ExtArgs>
+    deliveries?: boolean | Deliveryman$deliveriesArgs<ExtArgs>
     _count?: boolean | DeliverymanCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["deliveryman"]>
 
@@ -1284,7 +1284,7 @@ export namespace Prisma {
 
   export type DeliverymanOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "password", ExtArgs["result"]["deliveryman"]>
   export type DeliverymanInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Deliveries?: boolean | Deliveryman$DeliveriesArgs<ExtArgs>
+    deliveries?: boolean | Deliveryman$deliveriesArgs<ExtArgs>
     _count?: boolean | DeliverymanCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type DeliverymanIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1293,7 +1293,7 @@ export namespace Prisma {
   export type $DeliverymanPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Deliveryman"
     objects: {
-      Deliveries: Prisma.$DeliveriesPayload<ExtArgs>[]
+      deliveries: Prisma.$DeliveriesPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1693,7 +1693,7 @@ export namespace Prisma {
    */
   export interface Prisma__DeliverymanClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Deliveries<T extends Deliveryman$DeliveriesArgs<ExtArgs> = {}>(args?: Subset<T, Deliveryman$DeliveriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DeliveriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    deliveries<T extends Deliveryman$deliveriesArgs<ExtArgs> = {}>(args?: Subset<T, Deliveryman$deliveriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DeliveriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2114,9 +2114,9 @@ export namespace Prisma {
   }
 
   /**
-   * Deliveryman.Deliveries
+   * Deliveryman.deliveries
    */
-  export type Deliveryman$DeliveriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Deliveryman$deliveriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Deliveries
      */
@@ -2304,7 +2304,7 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     password?: boolean
-    Deliveries?: boolean | Clients$DeliveriesArgs<ExtArgs>
+    deliveries?: boolean | Clients$deliveriesArgs<ExtArgs>
     _count?: boolean | ClientsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["clients"]>
 
@@ -2328,7 +2328,7 @@ export namespace Prisma {
 
   export type ClientsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "password", ExtArgs["result"]["clients"]>
   export type ClientsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Deliveries?: boolean | Clients$DeliveriesArgs<ExtArgs>
+    deliveries?: boolean | Clients$deliveriesArgs<ExtArgs>
     _count?: boolean | ClientsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ClientsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2337,7 +2337,7 @@ export namespace Prisma {
   export type $ClientsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Clients"
     objects: {
-      Deliveries: Prisma.$DeliveriesPayload<ExtArgs>[]
+      deliveries: Prisma.$DeliveriesPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2737,7 +2737,7 @@ export namespace Prisma {
    */
   export interface Prisma__ClientsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    Deliveries<T extends Clients$DeliveriesArgs<ExtArgs> = {}>(args?: Subset<T, Clients$DeliveriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DeliveriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    deliveries<T extends Clients$deliveriesArgs<ExtArgs> = {}>(args?: Subset<T, Clients$deliveriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DeliveriesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3158,9 +3158,9 @@ export namespace Prisma {
   }
 
   /**
-   * Clients.Deliveries
+   * Clients.deliveries
    */
-  export type Clients$DeliveriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Clients$deliveriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Deliveries
      */
@@ -4423,14 +4423,14 @@ export namespace Prisma {
     id?: StringFilter<"Deliveryman"> | string
     username?: StringFilter<"Deliveryman"> | string
     password?: StringFilter<"Deliveryman"> | string
-    Deliveries?: DeliveriesListRelationFilter
+    deliveries?: DeliveriesListRelationFilter
   }
 
   export type DeliverymanOrderByWithRelationInput = {
     id?: SortOrder
     username?: SortOrder
     password?: SortOrder
-    Deliveries?: DeliveriesOrderByRelationAggregateInput
+    deliveries?: DeliveriesOrderByRelationAggregateInput
   }
 
   export type DeliverymanWhereUniqueInput = Prisma.AtLeast<{
@@ -4440,7 +4440,7 @@ export namespace Prisma {
     OR?: DeliverymanWhereInput[]
     NOT?: DeliverymanWhereInput | DeliverymanWhereInput[]
     password?: StringFilter<"Deliveryman"> | string
-    Deliveries?: DeliveriesListRelationFilter
+    deliveries?: DeliveriesListRelationFilter
   }, "id" | "username">
 
   export type DeliverymanOrderByWithAggregationInput = {
@@ -4468,14 +4468,14 @@ export namespace Prisma {
     id?: StringFilter<"Clients"> | string
     username?: StringFilter<"Clients"> | string
     password?: StringFilter<"Clients"> | string
-    Deliveries?: DeliveriesListRelationFilter
+    deliveries?: DeliveriesListRelationFilter
   }
 
   export type ClientsOrderByWithRelationInput = {
     id?: SortOrder
     username?: SortOrder
     password?: SortOrder
-    Deliveries?: DeliveriesOrderByRelationAggregateInput
+    deliveries?: DeliveriesOrderByRelationAggregateInput
   }
 
   export type ClientsWhereUniqueInput = Prisma.AtLeast<{
@@ -4485,7 +4485,7 @@ export namespace Prisma {
     OR?: ClientsWhereInput[]
     NOT?: ClientsWhereInput | ClientsWhereInput[]
     password?: StringFilter<"Clients"> | string
-    Deliveries?: DeliveriesListRelationFilter
+    deliveries?: DeliveriesListRelationFilter
   }, "id" | "username">
 
   export type ClientsOrderByWithAggregationInput = {
@@ -4573,28 +4573,28 @@ export namespace Prisma {
     id?: string
     username: string
     password: string
-    Deliveries?: DeliveriesCreateNestedManyWithoutDeliverymanInput
+    deliveries?: DeliveriesCreateNestedManyWithoutDeliverymanInput
   }
 
   export type DeliverymanUncheckedCreateInput = {
     id?: string
     username: string
     password: string
-    Deliveries?: DeliveriesUncheckedCreateNestedManyWithoutDeliverymanInput
+    deliveries?: DeliveriesUncheckedCreateNestedManyWithoutDeliverymanInput
   }
 
   export type DeliverymanUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    Deliveries?: DeliveriesUpdateManyWithoutDeliverymanNestedInput
+    deliveries?: DeliveriesUpdateManyWithoutDeliverymanNestedInput
   }
 
   export type DeliverymanUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    Deliveries?: DeliveriesUncheckedUpdateManyWithoutDeliverymanNestedInput
+    deliveries?: DeliveriesUncheckedUpdateManyWithoutDeliverymanNestedInput
   }
 
   export type DeliverymanCreateManyInput = {
@@ -4619,28 +4619,28 @@ export namespace Prisma {
     id?: string
     username: string
     password: string
-    Deliveries?: DeliveriesCreateNestedManyWithoutClientInput
+    deliveries?: DeliveriesCreateNestedManyWithoutClientInput
   }
 
   export type ClientsUncheckedCreateInput = {
     id?: string
     username: string
     password: string
-    Deliveries?: DeliveriesUncheckedCreateNestedManyWithoutClientInput
+    deliveries?: DeliveriesUncheckedCreateNestedManyWithoutClientInput
   }
 
   export type ClientsUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    Deliveries?: DeliveriesUpdateManyWithoutClientNestedInput
+    deliveries?: DeliveriesUpdateManyWithoutClientNestedInput
   }
 
   export type ClientsUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     username?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    Deliveries?: DeliveriesUncheckedUpdateManyWithoutClientNestedInput
+    deliveries?: DeliveriesUncheckedUpdateManyWithoutClientNestedInput
   }
 
   export type ClientsCreateManyInput = {
