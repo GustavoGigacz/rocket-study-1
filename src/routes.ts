@@ -23,6 +23,7 @@ const findAllUseCase = new findAllController()
 const updateDeliverymanUseCase = new UpdateDeliverymanController();
 const findAllDeliveriesClient = new FindAllDeliveriesController()
 const findAllDeliveriesDeliveryman = new FindAllDeliveriesDeliverymanController()
+const updateEndDateController = new UpdateDeliverymanController()
 
 
 
@@ -41,5 +42,7 @@ routes.put("/delivery/updateDeliveryman/:id", asyncHandler(ensureAuthenticationD
 routes.get("/client/deliveries", asyncHandler(findAllDeliveriesClient.handle))
 
 routes.get("/deliveryman/deliveries", asyncHandler(ensureAuthenticationDeliveryman), asyncHandler(findAllDeliveriesDeliveryman.handle))
+
+routes.put("/delivery/updateEndDate/:id", asyncHandler(ensureAuthenticationDeliveryman),asyncHandler(updateEndDateController.handle) )
 
 export { routes }
